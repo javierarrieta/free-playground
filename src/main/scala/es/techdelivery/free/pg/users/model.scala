@@ -13,7 +13,10 @@ object model {
   type Username = String @@ UsernameTag
 
   object Username {
-    def apply(v : String): Validated[String, Username] = Valid(tag[UsernameTag](v))
+    def apply(v : String): Validated[String, Username] = {
+      val username = tag[UsernameTag](v)
+      Valid(username)
+    }
   }
 
   sealed trait EmailAddressTag
@@ -21,7 +24,10 @@ object model {
   type EmailAddress = String @@ EmailAddressTag
 
   object EmailAddress {
-    def apply(v: String): Validated[String, EmailAddress] = Valid(tag[EmailAddressTag](v))
+    def apply(v: String): Validated[String, EmailAddress] = {
+      val email = tag[EmailAddressTag](v)
+      Valid(email)
+    }
   }
 
   sealed trait UserIdTag
